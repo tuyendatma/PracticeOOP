@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>đổi thang đo nhiệt độ</title>
+</head>
+<body>
+<script>
+    function Temperature(c) {
+        this.doC=c;
+        this.tinhDoF = function () {
+            return this.doC*1.8+32;
+
+        }
+        this.tinhDoKevin= function () {
+            return this.doC +273;
+
+        }
+
+    }
+    let element= new Temperature(25);
+    let f=element.tinhDoF();
+    let k=element.tinhDoKevin();
+    alert("giá trị F là: "+f+" giá trị K là: "+k);
+
+</script>
+</body>
+</html>
