@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vẽ hình tròn nâng cao</title>
+</head>
+<body>
+<canvas id="myCanvas" width="1200px" height="600px" style="border: 1px solid #FB0303;"></canvas>
+<script>
+    function Circle(x,y,radius) {
+        this.x = x;
+        this.y = y;
+        this.radius = radius;
+    }
+    function getRandomHex(){
+        return Math.floor(Math.random()*255);
+    }
+
+    function getRandomColor(){
+        var red = getRandomHex();
+        var green = getRandomHex();
+        var blue = getRandomHex();
+        //Giá trị màu RGB được chỉ định bằng: rgb (đỏ, xanh lá cây, xanh dương).
+        return "rgb(" + red + "," + blue + "," + green +")";
+    }
+
+    function createCircle() {
+        var ctx = document.getElementById("myCanvas").getContext("2d");
+        var radius = Math.floor(Math.random() * 80);
+        var color =getRandomColor();
+        var x = Math.random() * window.innerWidth;
+        var y = Math.random() * window.innerHeight;
+        var circle= new Circle(x, y, radius);
+        ctx.beginPath();
+        ctx.arc(circle.x,circle.y,circle.radius,0,2*Math.PI);
+        ctx.fillStyle=color;
+        ctx.fill();
+
+    }
+    function moveCircle() {
+        // phần này chưa làm được
+        //vướng phần không biết gán cái hình tròn là cái gì để nó nhận chuyển động.
+        //gán cho cả hàm creatCircle thì nó ko chạy.
+
+
+
+
+
+    }
+
+    function createMultipleCircle(){
+        for(var i = 0; i < 30; i++){
+            createCircle();
+        }
+    }
+
+    createMultipleCircle();
+
+</script>
+</body>
+</html>
