@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Điện thoại</title>
+</head>
+<body>
+<script>
+    function Phone(phoneNum,draft,inbox,sentMess) {
+        this.phoneNum= phoneNum;
+        this.draft = draft;
+        this.inbox= inbox;
+        this.mess =sentMess;
+        this.writeMess =function (newMess) {
+            this.draft=newMess;
+
+        }
+        this.sendMess=function (otherPhone) {
+            this.mess.push(this.draft);
+            otherPhone.inbox.push(this.draft);
+
+        }
+    }
+    let iphone= new Phone("911","hi",[],[]);
+    let nokia = new Phone("113","hi củ khoai",[],[]);
+    iphone.writeMess("hi son!");
+    iphone.sendMess(nokia);
+    alert(iphone.mess);
+    alert(nokia.inbox);
+
+
+</script>
+</body>
+</html>

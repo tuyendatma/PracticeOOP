@@ -30,7 +30,14 @@
             this.year = year;
         }
         this.setDate = function (day,month,year) {
-            return day + "/"+month +"/"+year;
+            this.day = day;
+            this.month =month;
+            this.year =year;
+
+        }
+        this.toString = function () {
+            let a = this.day+","+ this.month+","+this.year;
+            return alert(a);
 
         }
     };
@@ -48,8 +55,8 @@
     let month = date.getMonth();
     let year = date.getYear();
     // alert(day + "/" + month + "/" + year);
-    let a=date.setDate(5,5,2020);
-    alert(a);
+    date.setDate(5,5,2020);
+    date.toString();
 
 
 </script>
