@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Xây dựng lớp điện thoại</title>
+    <style>
+        form {
+            width: 500px;
+        }
+    </style>
+</head>
+<body>
+<script>
+    let Phone = function (phoneNum,battery,draft,inbox,sent) {
+        this.phoneNum=phoneNum;
+        this.battery=battery;
+        this.draft=draft;
+        this.inbox=inbox;
+        this.sent=sent;
+        this.mode=function () {
+            if(this.battery>0){
+                return true;
+            }else {
+                alert("SAP NGUON")
+                return false;
+            }
+
+        }
+        this.chargeBattery=function () {
+            this.battery=100;
+
+        }
+        this.writeMessage=function (newMessage) {
+            if(this.mode()){
+                this.draft=newMessage;
+                this.battery--;
+            }
+
+
+        }
+        this.sendMessage=function (newMessage,otherPhoneNumber) {
+            if(this.mode()){
+                this.writeMessage(newMessage);
+                this.sent.push(this.draft);
+                otherPhoneNumber.inbox.push(this.draft);
+                this.battery--;
+            }
+
+        }
+        this.showSent=function () {
+            alert(this.sent)
+
+        }
+        this.showInbox=function () {
+            alert(this.inbox)
+
+        }
+
+
+    }
+    let nokia= new Phone("911",100,"",[],[]);
+    let iphone= new Phone("113",100,"",[],[]);
+
+
+
+
+</script>
+<form style="border: 3px solid #FB0303" >
+    <label>Tao là Nokia, nồi đồng cối đá</label><br>
+    <input type="text" id="nokia"><br>
+
+    <input type="button" value="Gửi" id="sendMessageNokia" onclick='nokia.sendMessage(document.getElementById("nokia").value,iphone)'>
+    <input type="button" value="Hộp thư đến" id="inboxNokia" onclick="nokia.showInbox()">
+    <input type="button" value="Thư đã gửi" id="sentNokia" onclick="nokia.showSent()">
+</form>
+<form style="border: 1px solid #666666">
+    <label>Còn tao là Iphone, cán bộ thôn</label><br>
+    <input type="text" id="iphone"><br>
+    <button id="sendMessageIphone">Gửi</button>
+    <button id="inboxIphone">Hộp thư đến</button>
+    <button id="sentIphone">Thư đã gửi</button>
+</form>
+
+</body>
+</html>
