@@ -44,6 +44,7 @@
                 this.sent.push(this.draft);
                 otherPhoneNumber.inbox.push(this.draft);
                 this.battery--;
+                this.draft="";
             }
 
         }
@@ -65,21 +66,21 @@
 
 
 </script>
-<form style="border: 3px solid #FB0303" >
+
     <label>Tao là Nokia, nồi đồng cối đá</label><br>
     <input type="text" id="nokia"><br>
 
     <input type="button" value="Gửi" id="sendMessageNokia" onclick='nokia.sendMessage(document.getElementById("nokia").value,iphone)'>
     <input type="button" value="Hộp thư đến" id="inboxNokia" onclick="nokia.showInbox()">
     <input type="button" value="Thư đã gửi" id="sentNokia" onclick="nokia.showSent()">
-</form>
-<form style="border: 1px solid #666666">
+
     <label>Còn tao là Iphone, cán bộ thôn</label><br>
     <input type="text" id="iphone"><br>
-    <button id="sendMessageIphone">Gửi</button>
-    <button id="inboxIphone">Hộp thư đến</button>
-    <button id="sentIphone">Thư đã gửi</button>
-</form>
+    <button id="sendMessageIphone"onclick="iphone.sendMessage(document.getElementById('iphone').value,nokia);
+document.getElementById('iphone').value=''">Gửi</button>
+    <button id="inboxIphone" onclick="iphone.showInbox()">Hộp thư đến</button>
+    <button id="sentIphone" onclick="iphone.showSent()">Thư đã gửi</button>
+
 
 </body>
 </html>
